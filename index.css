@@ -1,0 +1,43 @@
+.background{
+	margin-top: 150px;
+	
+}
+
+
+.img{
+	width: 750px;
+    margin-left: 274px;
+
+
+}
+
+#start{
+	    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    display: block;
+    color: red;
+    background-color: white;
+    margin-top: 75px;
+}
+
+#white{
+	    width: 340px;
+    position: absolute;
+    margin-left: 280px;
+    height: 345px;
+    background-color: white;
+}
+
+#singly, #random{
+	margin-left: 200px;
+    margin-top: 60px;
+	position: absolute;
+	width: 250px;
+	background-color: white;
+	color: red;
+}
+
+#singly{
+	margin-top: 130px;
+}
