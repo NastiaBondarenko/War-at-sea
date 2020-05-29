@@ -1,12 +1,12 @@
 .background{
-	margin-top: 150px;
+	margin-top: 162px;
 	
 }
 
 
 .img{
-	width: 750px;
-    margin-left: 274px;
+	    width: 741px;
+    margin-left: 258px;
 
 
 }
@@ -24,7 +24,7 @@
 #white{
 	    width: 340px;
     position: absolute;
-    margin-left: 280px;
+    margin-left: 257px;
     height: 345px;
     background-color: white;
 }
@@ -40,4 +40,51 @@
 
 #singly{
 	margin-top: 130px;
+}
+
+.canvas{
+    position: absolute;
+    margin-top: 36px;
+    width: 695px;
+    height: 300px;
+     margin-left: 295px;
+
+}
+
+.MinMenu{
+    margin-top: -290px;
+    margin-left: 200px;
+}
+
+.Buttommenu{
+    background-color: white;
+    color: red;
+     width: 250px;
+     position: absolute;
+
+}
+
+#play{
+        margin-top: 45px;
+   
+    
+}
+
+#another{
+    height: 35px;
+}
+#anoth{
+    height: 35px;
+}
+
+.placeShip{
+    width: 255px;
+    color: red;
+    position: absolute;
+}
+.place{
+    color: red;
+    position: absolute;
+    margin-top: 78px;
+    margin-left: 222px;
 }
