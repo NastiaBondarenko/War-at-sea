@@ -23,6 +23,16 @@ class Ship {
   
 }
 
+const hiddenArray = (array) =>{
+	for(let i = 0; i < array.length; i++){
+		if(document.getElementById(array[i]).hidden == true){
+		 	document.getElementById(array[i]).hidden = false;
+		}
+		else document.getElementById(array[i]).hidden = true;
+	}
+}
+
+
 const cleanField = (field) =>{
 	for(let i = field.length; i > 0; i--){
 		field.pop();
@@ -35,6 +45,13 @@ const cleanShips = (player) =>{
 	}
 }
 
+
+const cleanAll = () =>{
+	cleanField(fieldPlayer);
+	cleanField(fieldComputer);
+	cleanShips(1);
+	cleanShips(0);
+}
 const recordField = (field, number) =>{
 	for(let i = 0; i < 10; i ++){
 		field.push([]);
@@ -65,11 +82,6 @@ const DrawShip = (field) =>{
 
 
 const Start = () =>{
-	cleanField(fieldPlayer);
-	cleanField(fieldComputer);
-	document.getElementById("divStart").hidden = "false";
-	document.getElementById("backg").hidden = "";
-	document.getElementById("white").hidden = "";
-	document.getElementById("random").hidden = "";
-	document.getElementById("singly").hidden = "";
+	cleanAll();
+	hiddenArray(['backg', "white", "random", "singly", "divStart"]);
 }
