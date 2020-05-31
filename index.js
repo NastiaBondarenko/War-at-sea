@@ -3,6 +3,8 @@
 let pageX;
 let pageY;
 
+
+
 const coordinateShip = (field, ship, x, y)=>{
 	let length = ship[1];
 	if(length == 0 ) length = ship[0];
@@ -100,37 +102,54 @@ const counter = (field) =>{
 			if(field[i][j] == 1) count ++;
 		}
 	}
-	if(count <= 4){
-	 	document.getElementById("four").hidden = "";
-		 return [4, count%4];
+	if(count <= 4) return [4, count%4];
+	if(count <= 10) return [3, (count-4)%3];
+	if(count <= 16) return [2, (count-10)%2];
+	if(count < 20)return [1, 0];
+	if(count == 20)return false;
+		
+}
+
+
+const masenge = (field) =>{
+	let count = 0;
+	for(let i = 0; i < 10; i++){
+		for(let j = 0; j < 10; j++){
+			if(field[i][j] == 1) count ++;
+		}
 	}
-	if(count <= 10){
+	if(count < 4){
+	 	document.getElementById("four").hidden = "";
+	 	return 0;
+	}
+	if(count < 10){
 		document.getElementById("four").hidden = "false";
 		document.getElementById("tree").hidden = "";
-	 	return [3, (count-4)%3];
+		return 0;
 	}
-	if(count <= 16){
+	if(count <16){
 		document.getElementById("two").hidden = "";
 		document.getElementById("tree").hidden = "false";
-	 	return [2, (count-10)%2];
+		return 0;
 	}
 	if(count < 20){
 		document.getElementById("two").hidden = "false";
 		document.getElementById("one").hidden = "";
-	 	return [1, 0];
+		return 0;
 	}
 
 	if(count == 20){
 		document.getElementById("one").hidden = "false";
 		document.getElementById("anoth").hidden = "";
 		document.getElementById("play").hidden = "";
-		return false;
+		return 0;
 	}	
 }
 
 const clickShip = (field, bolean) =>{
 	DrawShip(field);
 	counter(field);
+	masenge(field);
 	if(bolean == true){
 	setTimeout(WhereClick, 10);	
 	}
