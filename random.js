@@ -11,7 +11,13 @@ const recordCell = (coordinateX, coordinateY, field, num, boolean, number) =>{
 	if(coordinateX == 9) endX --;
 	for(let i = startX; i <= endX; i++){
 		for(let j = startY; j <= endY; j++){
-				if(field[coordinateX + i][coordinateY + j] <= 0) field[coordinateX + i][coordinateY + j] = num;	
+			if(boolean){
+				if(field[coordinateX + i][coordinateY + j] <= 0 && field[coordinateX + i][coordinateY + j] > -2 ) field[coordinateX + i][coordinateY + j] = num;	
+			} else {
+				if(i != j && i != -j){
+					if(field[coordinateX + i][coordinateY + j] <= 0 && field[coordinateX + i][coordinateY + j] > -2 ) field[coordinateX + i][coordinateY + j] = num;	
+				} 
+			}
 		}
 	}
 	field[coordinateX][coordinateY] = number;

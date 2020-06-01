@@ -52,6 +52,7 @@ const cleanAll = () =>{
 	cleanShips(1);
 	cleanShips(0);
 }
+
 const recordField = (field, number) =>{
 	for(let i = 0; i < 10; i ++){
 		field.push([]);
@@ -61,6 +62,15 @@ const recordField = (field, number) =>{
 	}
 }
 
+const numberPoint = (field) => {
+	let count = 0;
+	for(let i = 0; i < 10; i++){
+		for(let j = 0; j < 10; j++){
+			if(field[i][j] > 0) count ++;
+		}
+	}
+	return count;
+}
 
 const DrawShip = (field) =>{
 	ctx.clearRect(0, 0, 700, 300);
