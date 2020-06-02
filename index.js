@@ -98,6 +98,7 @@ function CLICK2 (e) {
 
 const WhereClick2 = () => {
 	 window.addEventListener('click', CLICK2, false);
+	 return 0;
 
 }
 
@@ -108,7 +109,6 @@ const belingComputer = () =>{
 		console.log(i,j);
 		if(fieldPlayer[i][j] > 0){
 			let num = fieldPlayer[i][j];
-			//console.log(i,j,num, Ships[num+9]);
 			 fieldBedingPlayer[i][j] = num;
 			 Ships[num+9].delete.push([i,j]);
 			 if(Ships[num+9].coordinate.length == Ships[num+9].delete.length){

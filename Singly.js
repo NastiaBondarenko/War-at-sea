@@ -91,6 +91,7 @@ function CLICK1 (e) {
 
 const WhereClick1 = () => {
 	 window.addEventListener('click', CLICK1, false);
+	 return 0;
 
 }
 
