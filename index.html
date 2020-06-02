@@ -22,14 +22,18 @@
   		<img class = 'img'  src="see.jpg">
   	</div>
     <div class = 'MinMenu'>
-    <button class = 'Buttommenu' id = 'another'  hidden="false" onclick="Random(0)"  >Розтавити інакше</button>
-    <button class = 'Buttommenu' id = 'anoth'  hidden="false" onclick="Singly(0)"  >Розтавити інакше</button>
-    <button class = 'Buttommenu' id = 'play'  hidden="false" onclick="Play()"  ><h1>Грати</h1> </button> 
+      <button class = 'Buttommenu' id = 'another'  hidden="false" onclick="Random(0)"  >Розтавити інакше</button>
+      <button class = 'Buttommenu' id = 'anoth'  hidden="false" onclick="Singly(0)"  >Розтавити інакше</button>
+      <button class = 'Buttommenu' id = 'playRandom'  hidden="false" onclick="Play(0)"  ><h1>Грати</h1> </button>
+      <button class = 'Buttommenu' id = 'playSingly'  hidden="false" onclick="Play(1)"  ><h1>Грати</h1> </button> 
+    </div>
+    <div class = 'mesengBox'>
+      <div class = "mesenger" id = "movePlayer" hidden="false"><h2>Ваш хід!</h2></div>
+      <div class = "mesenger" id = "moveComputer" hidden="false"><h2>Противник ходить</h2></div>
     </div>
     <script src="mane.js"></script>
     <script src="random.js"></script>
     <script src="Singly.js"></script>
-    
   	<script src="index.js"></script>
  </body>
 </html>

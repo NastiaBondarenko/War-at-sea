@@ -64,12 +64,21 @@
 
 }
 
-#play{
+#playRandom, #playSingly{
         margin-top: 45px;
    
     
 }
 
+.mesengBox{
+    position: absolute;
+    margin-top: -150px;
+    width: 100%;
+}
+.mesenger{
+    color: red;
+    margin-left: 570px;
+}
 #another{
     height: 35px;
 }

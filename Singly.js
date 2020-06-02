@@ -69,28 +69,28 @@ const checkSinglyShip = (i,j) =>{
 }
 
 
-const coordinate = (x,y) =>{
+const coordinate1 = (x,y) =>{
 	let coordinateX;
 	let coordinateY;
-	if(y > COORDINATETOPPleyer && y < COORDINATETOPPleyer + WIDTH*10){
-		coordinateY = Math.floor((y - COORDINATETOPPleyer) / WIDTH);
-	}else setTimeout(WhereClick, 10);	
+	if(y > COORDINATETOP && y < COORDINATETOP + WIDTH*10){
+		coordinateY = Math.floor((y - COORDINATETOP) / WIDTH);
+	}else setTimeout(WhereClick1, 10);	
 	if(x > COORDINATELEFTPleyer && x < COORDINATELEFTPleyer + WIDTH*10){
 		coordinateX = Math.floor((x - COORDINATELEFTPleyer ) / WIDTH);
-	} else setTimeout(WhereClick, 10);	
+	} else setTimeout(WhereClick1, 10);	
 	checkSinglyShip(coordinateY, coordinateX);
 }
 
-function CLICK (e) {
+function CLICK1 (e) {
 	 pageX = e.pageX;
 	 pageY = e.pageY;
-	 coordinate(pageX, pageY);
-	 window.removeEventListener('click', CLICK, false);
+	 coordinate1(pageX, pageY);
+	 window.removeEventListener('click', CLICK1, false);
 
 }
 
-const WhereClick = () => {
-	 window.addEventListener('click', CLICK, false);
+const WhereClick1 = () => {
+	 window.addEventListener('click', CLICK1, false);
 
 }
 
@@ -112,7 +112,7 @@ const masenge = (field) =>{
 	if(count == 4) hiddenArray(["four", "tree"]);
 	if(count == 10) hiddenArray(["two","tree" ]);
 	if(count == 16) hiddenArray(["two","one" ]);
-	if(count == 20) hiddenArray(["one", "anoth", "play"]);
+	if(count == 20) hiddenArray(["one", "anoth", "playSingly"]);
 	return count;
 	
 }
@@ -121,7 +121,13 @@ const masenge = (field) =>{
 const clickShip = (field) =>{
 	let count = masenge(field);
 	DrawShip(field);
-	if(count < 20 )	setTimeout(WhereClick, 10);	
+	if(count < 20 ){
+		DrawShip(field);
+	 setTimeout(WhereClick1, 10);	
+	} else{
+		SinglyRecordFieldRecord(field, false);
+		DrawShip(field);
+	}
 	
 }
 

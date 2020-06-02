@@ -5,7 +5,7 @@ const canvas = document.getElementById('myCanvas');
 const ctx= canvas.getContext('2d');
 const fieldComputer =[];
 const fieldPlayer = [];
-const COORDINATETOPPleyer = 200;
+const COORDINATETOP = 200;
 const COORDINATELEFTPleyer = 700;
 const COORDINATELEFTPComputer = 305;
 const WIDTH = 30;
@@ -19,6 +19,7 @@ class Ship {
     this.coordinate = [[x,y],];
     this.number = num;
     this.who = player;
+    this.delete = [];
   }
   
 }

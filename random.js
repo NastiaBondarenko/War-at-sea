@@ -71,7 +71,7 @@ const randomRecordField = (field, player) =>{
 const Random  = (num) =>{
 	ctx.clearRect(0, 0, 700, 300);
 	cleanAll();
-	if(num) hiddenArray(["random", "singly", "myCanvas", "another", "play"]);
+	if(num) hiddenArray(["random", "singly", "myCanvas", "another", "playRandom"]);
 	randomRecordField(fieldComputer, 0);
 	randomRecordField(fieldPlayer, 1);
 	DrawShip(fieldPlayer);
