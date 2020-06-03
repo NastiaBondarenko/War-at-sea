@@ -33,7 +33,8 @@ const checkShip =  (coordinateX, coordinateY, direction, length, field, number, 
 		if(coordinateX + deltaX > 9  || coordinateY+deltaY > 9) return false;
 		if(field[coordinateX+deltaX][coordinateY+deltaY] != 0) return false;
 	}
-	Ships.push(new Ship(length, coordinateX, coordinateY, number, player));
+	Ships.push(new Ship(length,  number, player));
+	Ships[(number-1)+10*player].coordinate.push([coordinateX, coordinateY]);
 	recordCell(coordinateX, coordinateY, field, -2, true, number);
 	for(let i = 1 ; i < length; i++){
 		deltaX = 0;
@@ -59,7 +60,6 @@ const randomRecordShip = (length, field, number, player) =>{
 
 const randomRecordField = (field, player) =>{
 	let number = 1;
-	recordField(field,0);
 	for(let i = 5; i > 0; i--){
 		for(let j = 5-i; j > 0; j--){
 			randomRecordShip(i, field, number, player);
@@ -68,11 +68,18 @@ const randomRecordField = (field, player) =>{
 	}
 }
 
-const Random  = (num) =>{
-	ctx.clearRect(0, 0, 700, 300);
-	cleanAll();
-	if(num) hiddenArray(["random", "singly", "myCanvas", "another", "playRandom"]);
-	randomRecordField(fieldComputer, 0);
-	randomRecordField(fieldPlayer, 1);
-	DrawShip(fieldPlayer);
+const RandomRecordShip  = (num) =>{
+	if(num){ hiddenArray(["random", "singly", "myCanvas", "another", "playRandom"]);
+	fieldPlayer = new fields();
+	fieldComputer = new fields();
+	}
+	else{
+		fieldPlayer.clean();
+		fieldComputer.clean();
+		cleanShips();
+	}
+	randomRecordField(fieldComputer.see, 0);
+	randomRecordField(fieldPlayer.see, 1);
+	clearSee();
+	drawShips(1);
 }

@@ -1,50 +1,28 @@
 'use strict'
  
-const fieldBedingComputer = [];
-const fieldBedingPlayer = [];
+
 
 
 const drawmask = () =>{
-	//console.log(fieldBedingPlayer, Ships);
 	for(let i = 0; i < 10; i++){
 		for(let j = 0; j < 10; j++){
 			if(fieldBedingComputer[i][j] > 0 || fieldBedingComputer[i][j] == -1){
 			let color;
 				if(fieldBedingComputer[i][j] > 0){
-				color = 'red';
-				ctx.beginPath();
-				ctx.fillStyle = color;
-  				ctx.fillRect(0+ j*12.9, 0.5+i*15, 12.9, 14.7);
-  				ctx.fill();
-  				ctx.closePath();
+				drawRectangle(i,j, 0, 'red');
 				}
 				if(fieldBedingComputer[i][j]  == -1){
-				 color = 'black';
-				 ctx.beginPath();
-				   ctx.fillStyle = color;
-  				   ctx.arc(7+ j*13, 8+i*15, 1, 0, Math.PI * 2, false);
-				  ctx.fill();
-				  ctx.closePath();
+					drawPoint(i,j,0, 'black');
 				}
 				
   			}
   			if(fieldBedingPlayer[i][j] > 0 || fieldBedingPlayer[i][j] == -1){
   					let color;
 				if(fieldBedingPlayer[i][j] > 0){
-				 color = 'red';
-				 ctx.beginPath();
-				ctx.fillStyle = color;
-  				ctx.fillRect(171+ j*12.9, 0.5+i*15, 12.9, 14.7);
-  				ctx.fill();
-  				ctx.closePath();
+				DrawRectangle(i,j,1, 'red');
 				}
 				if(fieldBedingPlayer[i][j]  == -1){
-				 color = 'black';
-				ctx.beginPath();
-				ctx.fillStyle = color;
-				ctx.arc(178+ j*13, 8+i*15, 1, 0, Math.PI * 2, false);
-  				ctx.fill();
-  				ctx.closePath();
+					DrawPoint(i,j,1, 'black');
   				}
   			}
   				
