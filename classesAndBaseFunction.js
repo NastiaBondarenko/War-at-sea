@@ -41,7 +41,7 @@ class fields {
 		}
 	}
 	drawMask(){
-		console.log(this.sea);
+		//console.log(this.sea);
 		for(let i = 0; i < 10; i++){
 			for(let j = 0; j < 10; j++){
 				if(this.sea[i][j] == -1) drawPoint(i,j, this.who, 'black');
@@ -99,7 +99,27 @@ const WhereClick = () => {
 
 }
 
-
+const recordAroundCell = (i, j, field, num, boolean, number, cell) =>{ 
+	let coordinate = [i, j];
+	let start = [-1,-1];
+	let end = [1,1];
+	for(let k = 0; k < 2; k++){
+		if(coordinate[k] == 0) start[k]++;
+		if(coordinate[k] == 9) end[k]--;
+	}
+	for(let k = start[0]; k <= end[0]; k++){
+		for(let f = start[1]; f <= end[1]; f++){
+			if(boolean){
+				if(field[i + k][j + f] == cell) field[i + k][j + f] = num;	
+			} else {
+				if(k != f && k != -f){
+					if(field[i + k][j + f] == cell ) field[i + k][j + f] = num;
+				} 
+			}
+		}
+	}
+	field[i][j] = number;
+}
 
 
 

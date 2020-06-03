@@ -13,7 +13,8 @@ const SinglyRecordFieldRecord = (field, bolean) =>{
 }
 
 const MarkCoordinate = (coordinate, field) =>{
-	if(coordinate.length == 1) recordCell(coordinate[0][0], coordinate[0][1], field, -2, false, Ships.length%10);
+	console.log(field);
+	if(coordinate.length == 1) recordAroundCell(coordinate[0][0], coordinate[0][1], field, -2, false, Ships.length%10, 0);
 	else{
 		let deltaI = coordinate[1][0] - coordinate[0][0];
 		let deltaJ = coordinate[1][1] - coordinate[0][1];
@@ -33,7 +34,7 @@ const MarkCoordinate = (coordinate, field) =>{
 
 const frameForShip = (coordinate, field) =>{
 	for(let i = 0; i < coordinate.length; i++){
-		recordCell(coordinate[i][0], coordinate[i][1], field, -3, true, Ships.length-10);
+		recordAroundCell(coordinate[i][0], coordinate[i][1], field, -3, true, Ships.length-10, -2);
 	}
 }
 
@@ -138,6 +139,6 @@ const Singly = (num) =>{
 	 fieldComputer.clean(0);
 	 cleanShips();
 	}
-	randomRecordField(fieldComputer.sea, 0);
+	orderRandomRecordShips(fieldComputer.sea, 0);
 	clickShip(fieldPlayer.sea);
 }
