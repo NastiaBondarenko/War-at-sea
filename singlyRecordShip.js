@@ -1,7 +1,5 @@
 'use strict'
 
-
-
 const SinglyRecordFieldRecord = (field, bolean) =>{
 		for(let i = 0; i < 10; i++){
 		for(let j = 0; j < 10; j++){
@@ -12,91 +10,103 @@ const SinglyRecordFieldRecord = (field, bolean) =>{
 	}
 }
 
-const MarkCoordinate = (coordinate, field) =>{
-	console.log(field);
-	if(coordinate.length == 1) recordAroundCell(coordinate[0][0], coordinate[0][1], field, -2, false, Ships.length%10, 0);
-	else{
-		let deltaI = coordinate[1][0] - coordinate[0][0];
-		let deltaJ = coordinate[1][1] - coordinate[0][1];
-		let startI = coordinate[0][0] - deltaI;
-		let startJ = coordinate[0][1] - deltaJ;
-		let endI = coordinate[coordinate.length-1][0] + deltaI;
-		let endJ = coordinate[coordinate.length-1][1] + deltaJ;
-		if(startI >=0 && startJ >= 0){
-		 if(field[startI][startJ] != -3) field[startI][startJ] = -2;
-		}
-		if(endI < 10 && endJ < 10){
-			if(field[endI][endJ] != -3)field[endI][endJ] = -2;
+const recordDirection = (coordinate, deltaI, deltaJ, field, emply, num) =>{
+	if(coordinate[0][0] - deltaI >= 0 && coordinate[0][1] - deltaJ >=0){
+		if(field[coordinate[0][0] - deltaI][coordinate[0][1] - deltaJ] == emply){
+			field[coordinate[0][0] - deltaI][coordinate[0][1] - deltaJ] = num;	
+		} 
+	}
+	if(coordinate[coordinate.length-1][0] + deltaI < 10 && coordinate[coordinate.length-1][1] + deltaJ < 10){
+		if(field[coordinate[coordinate.length-1][0] + deltaI][coordinate[coordinate.length-1][1] + deltaJ] == emply){
+			field[coordinate[coordinate.length-1][0] + deltaI][coordinate[coordinate.length-1][1] + deltaJ] = num;	
 		} 
 	}
 }
 
-
-const frameForShip = (coordinate, field) =>{
-	for(let i = 0; i < coordinate.length; i++){
-		recordAroundCell(coordinate[i][0], coordinate[i][1], field, -3, true, Ships.length-10, -2);
-	}
-}
-
-const checkSinglyShip = (i,j) =>{   //переписати
-	let ship = [];
-	if(fieldPlayer.sea[i][j] == -2){
-		
-	 	ship = counter(fieldPlayer.sea);
-	 	if(ship[1] == 0){
-		Ships.push(new Ship(ship[0], Ships.length+-9, 1));	
-		Ships[Ships.length-1].coordinate.push([i, j]);	
-		fieldPlayer.sea[i][j] = Ships.length-9;
+const MarkCoordinate = (coordinate, field, length) =>{
+	if(coordinate.length == 1){
+		if(checkWay(coordinate[0][0], coordinate[0][1], 1,0, length, field, 0)){
+			recordDirection(coordinate, 1, 0, field, 0, -2);
 		}
-	 	else{
-
-	 	 Ships[Ships.length-1].coordinate.push([i, j]);	
-	 	 Ships[Ships.length-1].coordinate.sort();
-	 	 fieldPlayer.sea[i][j] = Ships.length-10;
-	 	}
-	 
-	 if(ship[1] == ship[0]-1){
-	  SinglyRecordFieldRecord(fieldPlayer.sea, true);
-	  frameForShip(Ships[Ships.length-1].coordinate, fieldPlayer.sea);
-	 }
-	 else{
-	 	SinglyRecordFieldRecord(fieldPlayer.sea, false);
-	 	MarkCoordinate(Ships[Ships.length-1].coordinate, fieldPlayer.sea);
-
-	 }
-	 clickShip(fieldPlayer.sea);
-	}
-	else clickShip(fieldPlayer.sea);
-		
+		if(checkWay(coordinate[0][0], coordinate[0][1], 0,1, length, field, 0)){
+			recordDirection(coordinate, 0, 1, field, 0, -2);
+		}
+	} else recordDirection(coordinate, coordinate[1][0]-coordinate[0][0], coordinate[1][1]-coordinate[0][1], field, 0, -2);
 	
 }
 
-
-const coordinateForPlayerField = (x,y) =>{
-	let coordinateX;
-	let coordinateY;
-	if(y > COORDINATETOP && y < COORDINATETOP + WIDTH*10){
-		coordinateY = Math.floor((y - COORDINATETOP) / WIDTH);
-	}else setTimeout(WhereClick, 10);	
-	if(x > COORDINATELEFTPleyer && x < COORDINATELEFTPleyer + WIDTH*10){
-		coordinateX = Math.floor((x - COORDINATELEFTPleyer ) / WIDTH);
-	} else setTimeout(WhereClick, 10);	
-	checkSinglyShip(coordinateY, coordinateX);
+const checkWay = (I, J, deltaI, deltaJ, length, field, num) =>{
+	console.log(I, J);
+	let i= I;
+	let j = J;
+	let len = -2; 
+	do{
+		len++;
+		i = i + deltaI;
+		j = j + deltaJ;
+		console.log(i,j);
+	}while(i < 10 && j < 10 && field[i][j] == num);
+		i = I ;
+		j = J ;
+	do{
+		len++;
+		i = i - deltaI;
+		j = j - deltaJ;
+	}while( i >= 0 && j >=0 && field[i][j] == num)
+	if(len >= length-1){
+		console.log(len);
+	 return true;
+	}
+	else{
+		console.log(len);
+	 return false;	
+	}
 }
 
+const checkCellForShip = (i,j, length, field) =>{
+	if(checkWay(i,j,1,0,length, field, -2)) return true;
+	else{
+		if(checkWay(i,j,0,1,length, field, -2)) return true;
+		else return false;
+	}
+}
 
+const frameForShip = (coordinate, field, num) =>{
+	for(let i = 0; i < coordinate.length; i++){
+		recordAroundCell(coordinate[i][0], coordinate[i][1], field, -3, true, num-9, -2);
+	}
+}
 
+const checkSinglyShip = (i, j) =>{
+	let ship = counter(fieldPlayer.sea);
+	if(fieldPlayer.sea[i][j] == -2){
+		if(ship[1] == 0){ 
+			if(!checkCellForShip(i,j, ship[0],fieldPlayer.sea)){
+			 setTimeout(WhereClick, 10);	
+			 return false;
+			}
+		}
+		Ships[ship[2]].coordinate.push([i, j]);	
+		Ships[ship[2]].coordinate.sort();
+		fieldPlayer.sea[i][j] = ship[2]-9;
+			 
+		if(ship[1] == ship[0]-1){
+		  SinglyRecordFieldRecord(fieldPlayer.sea, true);
+		  frameForShip(Ships[ship[2]].coordinate, fieldPlayer.sea, ship[2]);
+		}else{
+		 	SinglyRecordFieldRecord(fieldPlayer.sea, false);
+		 	MarkCoordinate(Ships[ship[2]].coordinate, fieldPlayer.sea,  ship[0]);
+	 	}
+	 clickShip(fieldPlayer.sea);
+	} else setTimeout(WhereClick, 10);	
+}
 
 const counter = (field) =>{
-	let count = numberPoint(field);
-	if(count <= 4) return [4, count%4];
-	if(count <= 10) return [3, (count-4)%3];
-	if(count <= 15) return [2, (count-10)%2];
-	if(count < 20) return [1, 0];
-	if(count == 20) return [-1,0];
-		
+	for(let i = 10;  i < 20; i++){
+		if(Ships[i].coordinate.length < Ships[i].length) 
+			return [Ships[i].length, Ships[i].coordinate.length, i];
+	}	
 }
-
 
 const masenge = (field) =>{
 	let count = numberPoint(field);
@@ -105,33 +115,35 @@ const masenge = (field) =>{
 	if(count == 10) hiddenArray(["two","tree" ]);
 	if(count == 16) hiddenArray(["two","one" ]);
 	if(count == 20) hiddenArray(["one", "anoth", "playSingly"]);
-	return count;
-	
+	return count;	
 }
-
 
 const clickShip = (field) =>{
 	let count = masenge(field);
 	clearSea();
-	drawShip(1);
+	drawShips(1);
 	fieldPlayer.drawMask();
-	if(count < 20 ){
-		drawShip(1);
-	 	setTimeout(WhereClick, 10);	
-	} else{
-		SinglyRecordFieldRecord(field, false);
-		drawShip(1);
+	if(count < 20 ) setTimeout(WhereClick, 10);	
+	else SinglyRecordFieldRecord(field, false);	
+}
+
+const recordSinglyShipsToClass = () =>{
+	let number = 1;
+	for(let i = 5; i > 0; i--){
+		for(let j = 5-i; j > 0; j--){
+			Ships.push(new Ship(i, number, 1));
+			number++;
+		}
 	}
-	
 }
 
 const Singly = (num) =>{
+	//console.log(Ships);
 	involvedField = true;
 	if(num){
 	 hiddenArray(["myCanvas", "random", "singly"]);
 	 fieldPlayer = new fields(1, -2);
 	 fieldComputer = new fields(0,0);
-
 	}
 	else{
 	 hiddenArray([ "anoth", "play"]);
@@ -140,5 +152,7 @@ const Singly = (num) =>{
 	 cleanShips();
 	}
 	orderRandomRecordShips(fieldComputer.sea, 0);
+	recordSinglyShipsToClass();
+	console.log(Ships);
 	clickShip(fieldPlayer.sea);
 }

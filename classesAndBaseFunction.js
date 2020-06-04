@@ -7,18 +7,21 @@ class Ship {
     this.coordinate = [];
     this.number = num;
     this.who = player;
-    this.delete = [];
+    this.killed = [];
     this.full = false;
   }
 
-  draw(){
+  drawShip(){
   	for(let i = 0; i < this.coordinate.length; i++){
   		drawRectangle(this.coordinate[i][0], this.coordinate[i][1], this.who, 'blue');
   	}
-  	for(let i = 0; i < this.delete.length; i++){
-  		drawRectangle(this.delete[i][0], this.delete[i][1], this.who, 'red');
+  }	
+  drawKilled(){
+  	for(let i = 0; i < this.killed.length; i++){
+  		drawRectangle(this.killed[i][0], this.killed[i][1], this.who, 'red');
   	}
-  } 
+  }
+   
 }
 
 class fields {
@@ -73,21 +76,32 @@ const coordinate = (x,y) =>{
 	let coordinateX;
 	let coordinateY;
 	let coordinateLeft;
+	
 	if(involvedField)  coordinateLeft = COORDINATELEFTPleyer;
 	else coordinateLeft = COORDINATELEFTPComputer;
 	if(y > COORDINATETOP && y < COORDINATETOP + WIDTH*10){
 		coordinateY = Math.floor((y - COORDINATETOP) / WIDTH);
-	}else setTimeout(WhereClick, 10);	
-	if(x > coordinateLeft && x < coordinateLeft + WIDTH*10){
-		coordinateX = Math.floor((x - coordinateLeft) / WIDTH);
-	} else setTimeout(WhereClick, 10);	
-	if(involvedField) checkSinglyShip(coordinateY, coordinateX);
-	else checkBedingPlayer(coordinateY, coordinateX);
+		if(x > coordinateLeft && x < coordinateLeft + WIDTH*10){
+			coordinateX = Math.floor((x - coordinateLeft) / WIDTH);
+		} else setTimeout(WhereClick, 10);	
+		if(involvedField){
+		 checkSinglyShip(coordinateY, coordinateX);
+		 return true;
+		}
+		else{
+		 checkBedingPlayer(coordinateY, coordinateX);
+		 return true;
+		}
+	}else{
+	 setTimeout(WhereClick, 10);	
+	 return false;
+	}
+	
 }
 
 function CLICK (e) {
-	 pageX = e.pageX;
-	 pageY = e.pageY;
+	 let pageX = e.pageX;
+	 let pageY = e.pageY;
 	 coordinate(pageX, pageY);
 	 window.removeEventListener('click', CLICK, false);
 

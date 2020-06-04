@@ -12,7 +12,6 @@ const numberPoint = (field) => {
 
 const recordRandomShip = (i, j, direction, length, field, number, player) =>{
 	Ships.push(new Ship(length,  number, player));
-	Ships[(number-1)+10*player].coordinate.push([i, j]);
 	recordAroundCell(i, j, field, -2, true, number, 0);
 	let deltaI = 0;
 	let deltaJ = 0;
@@ -72,5 +71,5 @@ const RandomRecordShips  = (num) =>{
 	orderRandomRecordShips(fieldComputer.sea, 0);
 	orderRandomRecordShips(fieldPlayer.sea, 1);
 	clearSea();
-	drawShip(1);
+	drawShips(1);
 }

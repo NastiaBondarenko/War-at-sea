@@ -27,14 +27,24 @@ const clearSea = () => {
 	ctx.clearRect(0, 0, 700, 300);
 }
 
-const drawShip = (player) =>{
+const drawShips = (player) =>{
 	for(let i = player*10; i < Ships.length - 10 + player*10; i++){
-	 Ships[i].draw();
+	 Ships[i].drawShip();
 	}
 	
 }
 
-const drawShips = ()=>{
-	drawShip(1);
-	drawShip(0);
+const drawKilledShipsAndMask = () =>{
+	fieldPlayer.drawMask();
+	fieldComputer.drawMask();
+	for(let i = 0; i < Ships.length; i++){
+	 Ships[i].drawKilled();
+	}	
+	
+}
+
+
+const drawMasksForBeing = () =>{
+	fieldPlayer.drawMask();
+	fieldComputer.drawMask();
 }
