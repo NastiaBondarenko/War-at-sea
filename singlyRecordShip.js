@@ -1,11 +1,12 @@
 'use strict'
 
-const SinglyRecordFieldRecord = (field, bolean) =>{
+const SinglyRecordFieldRecord = (field, num1, num2) =>{
 		for(let i = 0; i < 10; i++){
 		for(let j = 0; j < 10; j++){
-			if(bolean){
-			 if(field[i][j] == 0) field[i][j] = -2;
-			}else if(field[i][j] == -2) field[i][j] = 0;
+			if(field[i][j] == num1) field[i][j] = num2;
+			//if(bolean){
+			// if(field[i][j] == 0) field[i][j] = -2;
+			//}else if(field[i][j] == -2) field[i][j] = 0;
 		}
 	}
 }
@@ -78,7 +79,7 @@ const frameForShip = (coordinate, field, num) =>{
 }
 
 const checkSinglyShip = (i, j) =>{
-	let ship = counter(fieldPlayer.sea);
+	let ship = counter(fieldPlayer.sea, true);
 	if(fieldPlayer.sea[i][j] == -2){
 		if(ship[1] == 0){ 
 			if(!checkCellForShip(i,j, ship[0],fieldPlayer.sea)){
@@ -91,20 +92,22 @@ const checkSinglyShip = (i, j) =>{
 		fieldPlayer.sea[i][j] = ship[2]-9;
 			 
 		if(ship[1] == ship[0]-1){
-		  SinglyRecordFieldRecord(fieldPlayer.sea, true);
+		  SinglyRecordFieldRecord(fieldPlayer.sea, 0, -2);
 		  frameForShip(Ships[ship[2]].coordinate, fieldPlayer.sea, ship[2]);
 		}else{
-		 	SinglyRecordFieldRecord(fieldPlayer.sea, false);
+		 	SinglyRecordFieldRecord(fieldPlayer.sea, -2, 0);
 		 	MarkCoordinate(Ships[ship[2]].coordinate, fieldPlayer.sea,  ship[0]);
 	 	}
 	 clickShip(fieldPlayer.sea);
 	} else setTimeout(WhereClick, 10);	
 }
 
-const counter = (field) =>{
-	for(let i = 10;  i < 20; i++){
-		if(Ships[i].coordinate.length < Ships[i].length) 
-			return [Ships[i].length, Ships[i].coordinate.length, i];
+const counter = (field, bolean) =>{
+	if(bolean){
+		for(let i = 0;  i < 20; i++){
+			if(Ships[i].coordinate.length < Ships[i].length) 
+				return [Ships[i].length, Ships[i].coordinate.length, i];
+		}	
 	}	
 }
 
@@ -124,7 +127,7 @@ const clickShip = (field) =>{
 	drawShips(1);
 	fieldPlayer.drawMask();
 	if(count < 20 ) setTimeout(WhereClick, 10);	
-	else SinglyRecordFieldRecord(field, false);	
+	else SinglyRecordFieldRecord(field, -2,0);	
 }
 
 const recordSinglyShipsToClass = () =>{
@@ -138,7 +141,6 @@ const recordSinglyShipsToClass = () =>{
 }
 
 const Singly = (num) =>{
-	//console.log(Ships);
 	involvedField = true;
 	if(num){
 	 hiddenArray(["myCanvas", "random", "singly"]);
@@ -153,6 +155,5 @@ const Singly = (num) =>{
 	}
 	orderRandomRecordShips(fieldComputer.sea, 0);
 	recordSinglyShipsToClass();
-	console.log(Ships);
 	clickShip(fieldPlayer.sea);
 }

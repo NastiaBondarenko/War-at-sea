@@ -44,11 +44,9 @@ class fields {
 		}
 	}
 	drawMask(){
-		//console.log(this.sea);
 		for(let i = 0; i < 10; i++){
 			for(let j = 0; j < 10; j++){
 				if(this.sea[i][j] == -1) drawPoint(i,j, this.who, 'black');
-				//if(this.see[i][j] == -2) drawRectangle(i,j, this.who, '#E6E6E6');
 
 			}
 		}
