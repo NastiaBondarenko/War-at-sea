@@ -13,7 +13,7 @@ class Ship {
   drawShip() {
     for (let i = 0; i < this.coordinate.length; i++) {
       const cord = this.coordinate[i];
-      drawRectangle(cord[0], cord[i][1], this.who, 'blue');
+      drawRectangle(cord[0], cord[1], this.who, 'blue');
     }
   }
   drawKilled() {
