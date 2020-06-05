@@ -72,5 +72,6 @@ const RandomRecordShips  = num => {
   orderRandomRecordShips(fieldComputer.sea, 0);
   orderRandomRecordShips(fieldPlayer.sea, 1);
   clearSea();
+  drawSea(1);
   drawShips(1);
 };

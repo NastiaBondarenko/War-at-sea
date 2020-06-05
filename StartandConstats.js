@@ -12,5 +12,5 @@ const Ships = [];
 
 
 const Start = () => {
-  hiddenArray(['backg', 'white', 'random', 'singly', 'divStart']);
+  hiddenArray(['backg', 'random', 'singly', 'divStart']);
 };

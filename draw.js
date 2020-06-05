@@ -8,7 +8,7 @@ const drawRectangle = (i, j, player, color) => {
   ctx.fillStyle = 'black';
   ctx.fillRect(player * 170.5 + j * 12.9, 0 + i * 15, 13.1, 14.9);
   ctx.fillStyle = color;
-  ctx.fillRect(player * 171 + j * 12.9, 0.5 + i * 15, 12.9, 14.7);
+  ctx.fillRect(player * 171 + j * 12.9, 0.5 + i * 15, 12, 14);
   ctx.fill();
   ctx.closePath();
 };
@@ -20,6 +20,14 @@ const drawPoint = (i, j, player, color) => {
   ctx.fill();
   ctx.closePath();
 };
+
+const drawSea = (player) =>{
+  for(let i = 0; i < 10; i++){
+    for(let j = 0; j < 10; j++){
+      drawRectangle(i,j, player, "white");
+    }
+  }
+}
 
 const clearSea = () => {
   ctx.clearRect(0, 0, 700, 300);

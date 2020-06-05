@@ -1,7 +1,6 @@
 'use strict';
 
 const nextMove = (i, j, field, bolean) => {
-  console.log(Ships);
   if (field[i][j] !== -1) {
     if (field[i][j] > 0) {
       let num = field[i][j] - 1;
@@ -13,7 +12,6 @@ const nextMove = (i, j, field, bolean) => {
         for (let i = 0; i < Ships[num].coordinate.length; i++) {
           const coordinateI = Ships[num].coordinate[i][0];
           const coordinateJ = Ships[num].coordinate[i][1];
-          //console.log(coordinateI, coordinateJ);
           recordAroundCell(coordinateI, coordinateJ, field, -1, true, -1, 0);
         }
       }
@@ -122,12 +120,13 @@ const movePlayer = bolean => {
 };
 
 const Play = num => {
+  drawSea(0);
   SinglyRecordFieldRecord(fieldPlayer.sea, -2, 0);
   SinglyRecordFieldRecord(fieldComputer.sea, -2, 0);
   SinglyRecordFieldRecord(fieldPlayer.sea, -3, 0);
   involvedField = false;
-  if (num) hiddenArray(['anoth', 'playSingly', 'white']);
-  else hiddenArray(['another', 'playRandom', 'white']);
+  if (num) hiddenArray(['anoth', 'playSingly',]);
+  else hiddenArray(['another', 'playRandom', ]);
   if (Math.random() > 1 / 2) {
     movePlayer(false);
     hiddenArray(['movePlayer']);

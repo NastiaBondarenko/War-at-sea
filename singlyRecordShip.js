@@ -121,6 +121,7 @@ const masenge = field => {
 const clickShip = field => {
   const count = masenge(field);
   clearSea();
+  drawSea(1);
   drawShips(1);
   fieldPlayer.drawMask();
   if (count < 20) setTimeout(WhereClick, 10);
@@ -138,6 +139,7 @@ const recordSinglyShipsToClass = () => {
 };
 
 const Singly = num => {
+
   involvedField = true;
   if (num) {
     hiddenArray(['myCanvas', 'random', 'singly']);
@@ -149,6 +151,7 @@ const Singly = num => {
     fieldComputer.clean(0);
     cleanShips();
   }
+  drawSea(1);
   orderRandomRecordShips(fieldComputer.sea, 0);
   recordSinglyShipsToClass();
   clickShip(fieldPlayer.sea);
