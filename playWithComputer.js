@@ -3,7 +3,6 @@
 const nextMove = (i,j ,field, bolean) =>{
 	if(field[i][j] != -1){
 		if(field[i][j] > 0){
-			console.log(i,j);
 			let num = field[i][j];
 			if(!bolean) num = num + 10;
 			field[i][j] = -1;
@@ -68,7 +67,6 @@ const randomCellForBeing = (i, j, field) =>{
 const cellForBeing = (coordinate, field) =>{
 	let deltaI = coordinate[1][0] - coordinate[0][0];
 	let deltaJ = coordinate[1][1] -coordinate[0][1];
-	console.log(deltaI, deltaJ);
 	let random = Math.random()*10;
 	
 	if(random<5){
@@ -84,11 +82,9 @@ const cellForBeing = (coordinate, field) =>{
 }
 
 const belingComputer = () =>{
-	console.log(fieldPlayer.sea, Ships);
 	let crdn =[];
 	let num = counterForPlay();
 	let coordinate = Ships[num].killed;
-	console.log(coordinate, num);
 	if(coordinate.length == 0){
 		 crdn[0] = Math.floor(Math.random()*10);
 		 crdn[1] = Math.floor(Math.random()*10);
@@ -133,7 +129,6 @@ const movePlayer = (bolean) =>{
 }
 
 const Play = (num) =>{
-	console.log(Ships);
 	SinglyRecordFieldRecord(fieldPlayer.sea, -2, 0);
 	SinglyRecordFieldRecord(fieldComputer.sea, -2, 0);
 	SinglyRecordFieldRecord(fieldPlayer.sea, -3, 0);

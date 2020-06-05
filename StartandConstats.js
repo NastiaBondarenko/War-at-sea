@@ -1,7 +1,5 @@
 'use strict'
 
-
-
 let fieldComputer;
 let fieldPlayer ;
 let involvedField;

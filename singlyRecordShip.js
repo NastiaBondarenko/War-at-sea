@@ -37,7 +37,6 @@ const MarkCoordinate = (coordinate, field, length) =>{
 }
 
 const checkWay = (I, J, deltaI, deltaJ, length, field, num) =>{
-	console.log(I, J);
 	let i= I;
 	let j = J;
 	let len = -2; 
@@ -45,7 +44,6 @@ const checkWay = (I, J, deltaI, deltaJ, length, field, num) =>{
 		len++;
 		i = i + deltaI;
 		j = j + deltaJ;
-		console.log(i,j);
 	}while(i < 10 && j < 10 && field[i][j] == num);
 		i = I ;
 		j = J ;
@@ -55,11 +53,9 @@ const checkWay = (I, J, deltaI, deltaJ, length, field, num) =>{
 		j = j - deltaJ;
 	}while( i >= 0 && j >=0 && field[i][j] == num)
 	if(len >= length-1){
-		console.log(len);
 	 return true;
 	}
 	else{
-		console.log(len);
 	 return false;	
 	}
 }
