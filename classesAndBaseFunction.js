@@ -19,7 +19,7 @@ class Ship {
   drawKilled() {
     for (let i = 0; i < this.killed.length; i++) {
       const kill = this.killed[i];
-      drawRectangle(kill[0], kill[i][1], this.who, 'red');
+      drawRectangle(kill[0], kill[1], this.who, 'red');
     }
   }
 
