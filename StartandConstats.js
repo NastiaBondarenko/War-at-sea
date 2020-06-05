@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
 let fieldComputer;
-let fieldPlayer ;
+let fieldPlayer;
 let involvedField;
 const COORDINATETOP = 200;
 const COORDINATELEFTPleyer = 700;
@@ -11,6 +11,6 @@ const Ships = [];
 
 
 
-const Start = () =>{
-	hiddenArray(['backg', "white", "random", "singly", "divStart"]);
-}
+const Start = () => {
+  hiddenArray(['backg', 'white', 'random', 'singly', 'divStart']);
+};
