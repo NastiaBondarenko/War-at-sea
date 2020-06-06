@@ -95,7 +95,7 @@ const moveComputer = (bolean, time) => {
   activePlayer = 1;
   drawKilledShipsAndMask();
   if (numberPoint(fields[1].sea) === 0) {
-    hiddenArray(['dontVin', 'oneMore', 'moveComputer']);
+    hiddenArray(['dontVin',  'moveComputer']);
   } else {
     if (bolean) {
       hiddenArray(['movePlayer', 'moveComputer' ]);
