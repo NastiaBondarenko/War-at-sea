@@ -10,7 +10,6 @@ const movePlayer0 = bolean => {
   }
 };
 
-
 const movePlayer1 = bolean => {
   activePlayer = 1;
   drawKilledShipsAndMask();
@@ -21,7 +20,6 @@ const movePlayer1 = bolean => {
     setTimeout(WhereClick, 10);
   }
 };
-
 
 const together = num => {
   singlyOrTogetherPlay = 0;

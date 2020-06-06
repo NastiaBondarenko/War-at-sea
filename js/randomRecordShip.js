@@ -1,6 +1,5 @@
 'use strict';
 
-
 const recordRandomShip = (i, j, direction, length, field, number, player) => {
   Ships[player].push(new Ship(length,  number, player));
   recordAroundCell(i, j, field, -2, true, number, 0);

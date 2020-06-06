@@ -6,8 +6,6 @@ const Start = num => {
   if (num) hiddenArray(['divStart']);
 };
 
-
-
 const RandomRecordForOne = num => {
   if (num) {
     hiddenArray([ 'randomForOne', 'singlyForOne', ]);

@@ -54,16 +54,6 @@ const checkBedingPlayer = (i, j) => {
 };
 
 const randomCellForBeing = (i, j, field) => {
-  const random  = Math.random() * 20;
-  if (random < 5) {
-    if (i + 1 < 10 && field[i + 1][j] !== -1) return [i + 1, j];
-  }
-  if (random < 10) {
-    if (i - 1 >= 0 && field[i - 1][j] !== -1) return [i - 1, j];
-  }
-  if (random < 15) {
-    if (j - 1 >= 0 && field[i][j - 1] !== -1) return [i, j - 1];
-  }
   if (j + 1 < 10 && field[i][j + 1] !== -1) return [i, j + 1];
   if (j - 1 >= 0 && field[i][j - 1] !== -1) return [i, j - 1];
   if (i - 1 >= 0 && field[i - 1][j] !== -1) return [i - 1, j];
@@ -74,20 +64,13 @@ const randomCellForBeing = (i, j, field) => {
 const cellForBeing = (coordinate, field) => {
   const deltaI = coordinate[1][0] - coordinate[0][0];
   const deltaJ = coordinate[1][1] - coordinate[0][1];
-  const random = Math.random() * 10;
   const first = coordinate[0];
   const end = coordinate[coordinate.length - 1];
-  if (random < 5) {
     if (first[0] - deltaI >= 0 && first[1] - deltaJ) {
       if (field[first[0] - deltaI][first[1] - deltaJ] !== -1) {
         return [first[0] - deltaI, first[1] - deltaJ];
       } else return [end[0] + deltaI, end[1] + deltaJ];
     } else return [end[0] + deltaI, end[1] + deltaJ];
-  } else if (end[0] + deltaI < 10 && end[1] + deltaJ < 10) {
-    if (field[end[0] + deltaI][end[1] + deltaJ] !== -1) {
-      return [end[0] + deltaI, end[1] + deltaJ];
-    } return [first[0] - deltaI, first[1] - deltaJ];
-  } else return [first[0] - deltaI, first[1] - deltaJ];
 };
 
 const belingComputer = () => {
@@ -125,7 +108,7 @@ const movePlayer = bolean => {
   activePlayer = 0;
   drawKilledShipsAndMask();
   if (numberPoint(fields[0].sea) === 0){
-   hiddenArray(['vin', 'oneMore', 'movePlayer']);}
+   hiddenArray(['vin',  'movePlayer']);}
   else {
     if (bolean) hiddenArray(['moveComputer', 'movePlayer']);
     setTimeout(WhereClick, 10);
