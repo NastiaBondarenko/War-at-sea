@@ -10,6 +10,23 @@
 
 
 }
+ 
+ .another{
+    margin-top: 300px;
+    color: red;
+    margin-left: 201px;
+    width: 145px;
+    height: 58px;
+    padding: 0px;
+    background-color: white;ss
+}
+
+
+#playRandom, #playSingly, #nextForRandom, #nextForSingly, #togetherForRandom, #togetherForSingly {
+    width: 200px;
+    height: 69px;
+    margin-left: 100px;
+}
 
 #start{
 	    margin-left: auto;
@@ -42,12 +59,27 @@
 	margin-top: 130px;
 }
 
+.play{
+
+    margin-left: 436px;
+    margin-top: 55px;
+    position: absolute;
+    width: 250px;
+    height: 70px;
+    background-color: white;
+    color: red;
+}
+
+#playTogether, #singlyForOne, #singlyForTwo {
+    margin-top: 190px; 
+}
+
 .canvas{
     position: absolute;
     margin-top: 36px;
-    width: 695px;
+    width: 696px;
     height: 300px;
-     margin-left: 295px;
+     margin-left: 296px;
 
 }
 
@@ -64,11 +96,7 @@
 
 }
 
-#playRandom, #playSingly{
-        margin-top: 45px;
-   
-    
-}
+
 
 .mesengBox{
     position: absolute;
@@ -79,17 +107,15 @@
     color: red;
     margin-left: 570px;
 }
-#another{
-    height: 35px;
-}
-#anoth{
-    height: 35px;
-}
+
 
 .placeShip{
-    width: 255px;
+        width: 255px;
     color: red;
+    margin-left: 365px;
+    margin-top: -125px;
     position: absolute;
+
 }
 .place{
     color: red;

@@ -1,27 +1,19 @@
 'use strict';
 
-const numberPoint = field => {
-  let count = 0;
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
-      if (field[i][j] > 0) count++;
-    }
-  }
-  return count;
-};
 
 const recordRandomShip = (i, j, direction, length, field, number, player) => {
-  Ships.push(new Ship(length,  number, player));
+  Ships[player].push(new Ship(length,  number, player));
   recordAroundCell(i, j, field, -2, true, number, 0);
   let deltaI = 0;
   let deltaJ = 0;
   for (let k = 0; k < length; k++) {
     if (direction) deltaI = k;
     else deltaJ = k;
-    Ships[(number - 1) + 10 * player].coordinate.push([i + deltaI, j + deltaJ]);
+    Ships[player][(number - 1) ].coordinate.push([i + deltaI, j + deltaJ]);
     recordAroundCell(i + deltaI, j + deltaJ, field, -2, true, number, 0);
   }
-  Ships[(number - 1) + 10 * player].full = true;
+  Ships[player][(number - 1)].full = true;
+  return true;
 };
 
 const checkRandomShip = (i, j, direction, length, field, number, player) => {
@@ -46,7 +38,7 @@ const randomEachShip = (length, field, number, player) => {
   if (checkRandomShip(i, j, direction, length, field, number, player)) {
     return true;
   } else randomEachShip(length, field, number, player);
-
+  return false;
 };
 
 const orderRandomRecordShips = (field, player) => {
@@ -59,19 +51,15 @@ const orderRandomRecordShips = (field, player) => {
   }
 };
 
-const RandomRecordShips  = num => {
+const RandomRecordShips  = (num, active) => {
   if (num) {
-    hiddenArray(['random', 'singly', 'myCanvas', 'another', 'playRandom']);
-    fieldPlayer = new Fields(1, 0);
-    fieldComputer = new Fields(0, 0);
+    fields[active] = new Fields(active, 0);
   } else {
-    fieldPlayer.clean();
-    fieldComputer.clean();
-    cleanShips();
+    fields[active].clean();
+    cleanShips(active);
   }
-  orderRandomRecordShips(fieldComputer.sea, 0);
-  orderRandomRecordShips(fieldPlayer.sea, 1);
+  orderRandomRecordShips(fields[active].sea, active);
   clearSea();
-  drawSea(1);
-  drawShips(1);
+  drawSea(activePlayer);
+  drawShips(activePlayer);
 };

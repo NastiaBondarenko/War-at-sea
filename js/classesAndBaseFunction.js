@@ -1,5 +1,15 @@
 'use strict';
 
+let playOrRecord;
+let activePlayer;
+let singlyOrTogetherPlay;
+const COORDINATETOP = 200;
+const COORDINATELEFTPleyer = 700;
+const COORDINATELEFTPComputer = 305;
+const WIDTH = 30;
+const fields = [[], []];
+const Ships = [[], []];
+
 class Ship {
   constructor(leng, num, player) {
     this.length = leng;
@@ -55,7 +65,6 @@ class Fields {
   }
 }
 
-
 const hiddenArray = array => {
   for (let i = 0; i < array.length; i++) {
     if (document.getElementById(array[i]).hidden === true) {
@@ -64,27 +73,25 @@ const hiddenArray = array => {
   }
 };
 
-const cleanShips = () => {
-  for (let i = Ships.length; i >= 0; i--) {
-    Ships.splice(i, 1);
-  }
+const cleanShips = player => {
+  Ships[player].splice(0, 10);
 };
 
 const coordinate = (x, y) => {
   let coordinateX;
   let coordinateY;
   let coordinateLeft;
-
-  if (involvedField)  coordinateLeft = COORDINATELEFTPleyer;
+  if (activePlayer)  coordinateLeft = COORDINATELEFTPleyer;
   else coordinateLeft = COORDINATELEFTPComputer;
   if (y > COORDINATETOP && y < COORDINATETOP + WIDTH * 10) {
     coordinateY = Math.floor((y - COORDINATETOP) / WIDTH);
     if (x > coordinateLeft && x < coordinateLeft + WIDTH * 10) {
       coordinateX = Math.floor((x - coordinateLeft) / WIDTH);
     } else setTimeout(WhereClick, 10);
-    if (involvedField) {
+    if (playOrRecord) {
       checkSinglyShip(coordinateY, coordinateX);
       return true;
+
     } else {
       checkBedingPlayer(coordinateY, coordinateX);
       return true;
@@ -128,5 +135,14 @@ const recordAroundCell = (i, j, field, num, boolean, number, cell) => {
 };
 
 
+const numberPoint = field => {
+  let count = 0;
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (field[i][j] > 0) count++;
+    }
+  }
+  return count;
+};
 
 

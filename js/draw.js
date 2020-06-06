@@ -8,7 +8,7 @@ const drawRectangle = (i, j, player, color) => {
   ctx.fillStyle = 'black';
   ctx.fillRect(player * 170.5 + j * 12.9, 0 + i * 15, 13.1, 14.9);
   ctx.fillStyle = color;
-  ctx.fillRect(player * 171 + j * 12.9, 0.5 + i * 15, 12, 14);
+  ctx.fillRect(0.5 + player * 171 + j * 12.9, 0.5 + i * 15, 11.5, 13.5);
   ctx.fill();
   ctx.closePath();
 };
@@ -21,35 +21,31 @@ const drawPoint = (i, j, player, color) => {
   ctx.closePath();
 };
 
-const drawSea = (player) =>{
-  for(let i = 0; i < 10; i++){
-    for(let j = 0; j < 10; j++){
-      drawRectangle(i,j, player, "white");
+const drawSea = player => {
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      drawRectangle(i, j, player, 'white');
     }
   }
-}
+};
 
 const clearSea = () => {
   ctx.clearRect(0, 0, 700, 300);
 };
 
 const drawShips = player => {
-  for (let i = player * 10; i < Ships.length - 10 + player * 10; i++) {
-    Ships[i].drawShip();
+  for (let i = 0; i < 10; i++) {
+    Ships[player][i].drawShip();
   }
 };
 
 const drawKilledShipsAndMask = () => {
-  fieldPlayer.drawMask();
-  fieldComputer.drawMask();
-  for (let i = 0; i < Ships.length; i++) {
-    Ships[i].drawKilled();
+  fields[0].drawMask();
+  fields[1].drawMask();
+  for (let i = 0; i < 10; i++) {
+    Ships[0][i].drawKilled();
+    Ships[1][i].drawKilled();
   }
 
 };
 
-
-const drawMasksForBeing = () => {
-  fieldPlayer.drawMask();
-  fieldComputer.drawMask();
-};

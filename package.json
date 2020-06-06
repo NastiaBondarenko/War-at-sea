@@ -4,7 +4,7 @@
   "description": "Гра морський бій у варіаціях: для одного гравця, для двох гравція та для двох гравція через сервер.",
   "main": "index.html",
   "scripts": {
-    "start": "node app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
