@@ -1,0 +1,22 @@
+{
+  "name": "war-at-sea",
+  "version": "1.0.0",
+  "description": "Гра морський бій у варіаціях: для одного гравця, для двох гравція та для двох гравція через сервер.",
+  "main": "index.html",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NastiaBondarenko/War-at-sea.git"
+  },
+  "author": "Nastia Bondarenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NastiaBondarenko/War-at-sea/issues"
+  },
+  "homepage": "https://github.com/NastiaBondarenko/War-at-sea#readme",
+  "devDependencies": {
+    "eslint": "^7.2.0"
+  }
+}

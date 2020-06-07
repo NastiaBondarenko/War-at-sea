@@ -1,0 +1,125 @@
+.background{
+	margin-top: 162px;
+	
+}
+
+
+.img{
+	    width: 741px;
+    margin-left: 258px;
+
+
+}
+ 
+ .another{
+    margin-top: 300px;
+    color: red;
+    margin-left: 201px;
+    width: 145px;
+    height: 58px;
+    padding: 0px;
+    background-color: white;ss
+}
+
+
+#playRandom, #playSingly, #nextForRandom, #nextForSingly, #togetherForRandom, #togetherForSingly {
+    width: 200px;
+    height: 69px;
+    margin-left: 100px;
+}
+
+#start{
+	    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    display: block;
+    color: red;
+    background-color: white;
+    margin-top: 75px;
+}
+
+#white{
+	    width: 340px;
+    position: absolute;
+    margin-left: 257px;
+    height: 345px;
+    background-color: white;
+}
+
+#singly, #random{
+	margin-left: 200px;
+    margin-top: 60px;
+	position: absolute;
+	width: 250px;
+	background-color: white;
+	color: red;
+}
+
+#singly{
+	margin-top: 130px;
+}
+
+.play{
+
+    margin-left: 436px;
+    margin-top: 55px;
+    position: absolute;
+    width: 250px;
+    height: 70px;
+    background-color: white;
+    color: red;
+}
+
+#playTogether, #singlyForOne, #singlyForTwo {
+    margin-top: 190px; 
+}
+
+.canvas{
+    position: absolute;
+    margin-top: 36px;
+    width: 696px;
+    height: 300px;
+     margin-left: 296px;
+
+}
+
+.MinMenu{
+        margin-top: 77px;
+    margin-left: 237px;
+}
+
+.Buttommenu{
+    background-color: white;
+    color: red;
+     width: 250px;
+     position: absolute;
+
+}
+
+
+
+.mesengBox{
+    position: absolute;
+    margin-top: -150px;
+    width: 100%;
+}
+.mesenger{
+    color: red;
+    margin-left: 570px;
+}
+
+
+.placeShip{
+        width: 255px;
+    color: red;
+    margin-left: 365px;
+    margin-top: -125px;
+    position: absolute;
+
+}
+.place{
+    color: red;
+    position: absolute;
+    margin-top: 78px;
+    margin-left: 222px;
+}

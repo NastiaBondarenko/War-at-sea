@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <title>Морський бій</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+  	<div  id = "divStart" onclick="Start(1)" >
+  		<button id = 'start' ><h2>Почати гру</h2></button>
+  	</div>
+      <button class = 'play' id = 'playWithComputer'  hidden="false" onclick="WithComputer()"><h1>Грати одному</h1></button>
+      <button class = 'play' id = 'playTogether'  hidden="false" onclick= "Together(1)"><h1>Грати у двох</h1></button>
+  	<div class = 'background' id = 'backg' hidden="false" >
+  		<div class = 'menu'><button class = 'play'id = 'randomForOne' hidden="false" onclick="RandomRecordForOne(1)" ><h4>Розтавити кораблі рандомно </h4></button> </div>
+  		<div class = 'menu'><button class = 'play' id = 'singlyForOne' hidden="false" onclick="SinglyRecordForOne(1)"  ><h4>Розтавити кораблі самостійнo</h4> </button> </div>
+      <div class = 'menu'><button class = 'play' id = 'randomForTwo' hidden="false" onclick="RandomRecordForTwo(1)" ><h4>Розтавити кораблі рандомно </h4></button> </div>
+      <div class = 'menu'><button class = 'play' id = 'singlyForTwo' hidden="false" onclick="SinglyRecordForTwo(1)"  ><h4>Розтавити кораблі самостійнo</h4> </button> </div>
+      <div class = 'place'>
+        <div class = 'placeShip' id = 'four' hidden="false"><h4>Розташуйте кліками по клітинкам один чотирьох палубний корабель</h4></div>
+        <div class = 'placeShip'  id = 'tree' hidden="false"><h4>Розташуйте кліками по клітинкам два трьох палубних корабелі</h4></div>
+        <div class = 'placeShip'  id = 'two' hidden="false"><h4>Розташуйте кліками по клітинкам три двох палубних корабелі</h4></div>
+        <div class = 'placeShip'  id = 'one' hidden="false"><h4>Розташуйте кліками по клітинкам чотири одно палубних кораблі</h4></div>
+      </div>
+      <canvas class = 'canvas' id="myCanvas" hidden="false"></canvas>
+  		<img class = 'img'  src="">
+  	</div>
+    <div class = 'mesengBox'>
+      <div class = "mesenger" id = "player1Turn" hidden="false"><h2>Гравець 1 записує кораблі</h2></div>
+      <div class = "mesenger" id = "player2Turn" hidden="false"><h2>Гравець 2 записує кораблі</h2></div>
+      <div class = "mesenger" id = "vin" hidden="false"><h2>Ви виграли!</h2></div>
+      <div class = "mesenger" id = "vinPl2" hidden="false"><h2>Гравець 1 виграв</h2></div>
+      <div class = "mesenger" id = "vinPl1" hidden="false"><h2>Гравець 2 виграв</h2></div>
+      <div class = "mesenger" id = "dontVin" hidden="false"><h2>Ви програли</h2></div>
+      <div class = "mesenger" id = "movePlayer" hidden="false"><h2>Ваш хід!</h2></div>
+      <div class = "mesenger" id = "moveComputer" hidden="false"><h2>Противник ходить</h2></div>
+      <div class = "mesenger" id = "movePlayer1" hidden="false"><h2>Гравець 1 ходить</h2></div>
+      <div class = "mesenger" id = "movePlayer2" hidden="false"><h2>Гравець 2 ходить</h2></div>
+    </div>
+      <div class = 'MinMenu'>
+      <button class = 'another' id = 'anotherRandomForOne'  hidden="false" onclick="RandomRecordForOne(0)"  >Розтавити інакше</button>
+      <button class = 'another'  id = 'anotherRandomForTwo'  hidden="false" onclick="RandomRecordForTwo(0)"  >Розтавити інакше</button>
+      <button class = 'another'  id = 'anotherSinglyForOne'  hidden="false" onclick="SinglyRecordForOne(0)"  >Розтавити інакше</button>
+      <button class = 'another'  id = 'anotherSinglyForTwo'  hidden="false" onclick="SinglyRecordForTwo(0)"  >Розтавити інакше</button>
+      <button class = 'another'  id = 'playRandom'  hidden="false" onclick="playWithComputer(0)"  ><h1>Грати</h1> </button>
+      <button class = 'another'  id = 'playSingly'  hidden="false" onclick="playWithComputer(1)"  ><h1>Грати</h1> </button> 
+       <button class = 'another'  id = 'nextForRandom'  hidden="false" onclick="nextForRandom()"  ><h1>Далі</h1> </button> 
+      <button class = 'another'  id = 'nextForSingly'  hidden="false" onclick="nextForSingly()"  ><h1>Далі</h1> </button> 
+       <button class = 'another'  id = 'togetherForRandom'  hidden="false" onclick="together(1)"  ><h1>Грати</h1> </button> 
+       <button class = 'another'  id = 'togetherForSingly'  hidden="false" onclick="together(0)"  ><h1>Грати</h1> </button> 
+
+    </div>
+    <script src="js/draw.js"></script>
+    <script src="js/classesAndBaseFunction.js"></script>
+    <script src="js/functionForbuttons.js"></script>
+    <script src="js/randomRecordShip.js"></script>
+    <script src="js/singlyRecordShip.js"></script>
+  	<script src="js/playWithComputer.js"></script>
+    <script src="js/playTogether.js"></script>
+ </body>
+</html>
