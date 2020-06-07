@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/NastiaBondarenko/War-at-sea/issues"
   },
-  "homepage": "https://github.com/NastiaBondarenko/War-at-sea#readme"
+  "homepage": "https://github.com/NastiaBondarenko/War-at-sea#readme",
+  "devDependencies": {
+    "eslint": "^7.2.0"
+  }
 }
